@@ -40,14 +40,14 @@ export const getPostList = async (
     const limit = Math.min(20, parseInt(reqQuery.limit || '10'));
     const searchKeyword = reqQuery?.kw || '';
 
-    const posts = await postDao.getPostList(page,limit,searchKeyword);
-    const totalPosts = await postDao.getPostCount(searchKeyword); 
+    const posts = await postDao.getPostList(page, limit, searchKeyword);
+    const totalPosts = await postDao.getPostCount(searchKeyword);
     const totalPages = Math.ceil(totalPosts / limit);
 
     res.json({
       data: posts,
       meta: {
-        totalPosts,
+        total: totalPosts,
         totalPages,
         currentPage: page,
         limit,
@@ -58,15 +58,6 @@ export const getPostList = async (
     res.status(500).json({ error: 'Error fetching posts' });
   }
 };
-
-// export const getPostList = async (req: Request, res: Response) => {
-//   try {
-//     const posts = await postDao.getAllPost();
-//     res.json({ data: posts });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Error fetching posts' });
-//   }
-// };
 
 // Fetch a single post by ID
 export const getPostById = async (req: Request, res: Response) => {

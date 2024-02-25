@@ -50,7 +50,12 @@ export const login = async (req: Request, res: Response) => {
     // Generate JWT token
     const token = generateToken(user.id);
 
-    res.json({ token });
+    res.json({
+      data: {
+        ...user,
+        token,
+      },
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

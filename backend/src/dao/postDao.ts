@@ -15,12 +15,13 @@ export const getPostList = async (
     skip: (page - 1) * limit,
     take: limit,
     ...getPostFilterQuery(searchKeyword),
+    orderBy: {
+      id: 'desc',
+    },
   });
 };
 
-export const getPostCount = async (
-  searchKeyword?: string
-) => {
+export const getPostCount = async (searchKeyword?: string) => {
   return prisma.post.count({
     ...getPostFilterQuery(searchKeyword),
   });
