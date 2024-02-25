@@ -1,4 +1,4 @@
-# Full Stack Web Application with Express.js, Prisma, React, and JWT Authentication
+# Simple Full Stack Web Application
 
 This repository contains both the backend and frontend projects for a full-stack web application built with Express.js, Prisma ORM, React, and JWT authentication.
 
